@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+class Inscripcion {
+    - Set<Materia> materiasACursar
+    - boolean fueAprobada
+    - Alumno alumno
+    - LocalDateTime fechaDeEvaluacion
+    - boolean aprobada()
+}
+
+class Alumno {
+    - String nombre
+    - String apellido
+    - Set<Materia> materiasAprobadas
+    - void agregarMateriaAprobada(Materia)
+}
+
+class Materia {
+    - String nombre
+    - Set<Materia> correlativas
+    - boolean cumpleCorrelativas(Alumno)
+}
+
+Materia <|-- Inscripcion
+Materia <|-- Alumno
+Alumno <|-- Inscripcion
+
+
+
+@enduml
